@@ -10,8 +10,8 @@ class Owner(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     email = db.Column(db.String)
-    phone = db.Column(db.Integer)
     address = db.Column(db.String)
+    phone = db.Column(db.BigInteger)
 
     # add relationships test
     visits = db.relationship("Visit", back_populates="owner")
@@ -94,7 +94,7 @@ class Sitter(db.Model, SerializerMixin):
     experience = db.Column(db.Integer, nullable=False)
     image = db.Column(db.String, nullable=True)
     address = db.Column(db.String, nullable=True)
-    phone = db.Column(db.String, nullable=True)
+    phone = db.Column(db.BigInteger, nullable=True)
     email = db.Column(db.String, nullable=True)
 
     visits = db.relationship('Visit', back_populates='sitter', cascade='all, delete-orphan')

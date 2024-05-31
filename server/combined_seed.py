@@ -1,5 +1,4 @@
-from app import app
-from config import db
+from config import db, app
 from random import randint, choice as rc
 from datetime import date, time, datetime
 from models import Owner, Pet, Sitter, Visit
