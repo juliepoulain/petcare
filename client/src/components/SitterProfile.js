@@ -11,7 +11,7 @@ const SitterProfile = ({ ownerId }) => {
   const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5555/sitters/${id}`)
+    fetch(`/sitters/${id}`)
       .then((r) => r.json())
       .then((data) => {
         setSitter(data);

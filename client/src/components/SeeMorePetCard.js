@@ -8,7 +8,7 @@ function SeeMorePetCard({ ownerId }) {
   const [showVisits, setShowVisits] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5555/pets/${id}`)
+    fetch(`/pets/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPet(data);

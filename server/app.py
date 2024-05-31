@@ -22,7 +22,7 @@ db.init_app(app)
 CORS(app)
 api = Api(app)
 
-@app.route("/")
+@app.route("/api")
 def index():
     return "<h1>Petsitting</h1>"
 
@@ -45,7 +45,7 @@ class Pets(Resource):
         db.session.add(new_pet)
         db.session.commit()
         return make_response(jsonify(new_pet.to_dict()), 201)
-api.add_resource(Pets, '/pets')
+api.add_resource(Pets, '/api/pets')
 
 
 
@@ -79,7 +79,7 @@ class PetsById(Resource):
         return make_response('', 204)
         
 
-api.add_resource(PetsById, '/pets/<int:id>')
+api.add_resource(PetsById, '/api/pets/<int:id>')
 
 class Owners(Resource):
     def get(self):
@@ -112,9 +112,9 @@ class OwnersByPhone(Resource):
             return make_response({"error": "Owner not found"}, 404)
         return make_response(jsonify(owner.to_dict()), 200)
 
-api.add_resource(Owners, '/owners')
-api.add_resource(OwnersById, '/owners/<int:id>')
-api.add_resource(OwnersByPhone, '/owners/phone/<int:phone>')
+api.add_resource(Owners, '/api/owners')
+api.add_resource(OwnersById, '/api/owners/<int:id>')
+api.add_resource(OwnersByPhone, '/api/owners/phone/<int:phone>')
 
 class Sitters(Resource):
     def get(self):
@@ -143,8 +143,8 @@ class SitterById(Resource):
             return make_response({"error": "Sitter not found"}, 404)
         return make_response(jsonify(sitter.to_dict()), 200)
 
-api.add_resource(Sitters, '/sitters')
-api.add_resource(SitterById, '/sitters/<int:id>')
+api.add_resource(Sitters, '/api/sitters')
+api.add_resource(SitterById, '/api/sitters/<int:id>')
 
 class Visits(Resource):
     def get(self):
@@ -169,10 +169,10 @@ class VisitById(Resource):
             return make_response({"error": "Visit not found"}, 404)
         return make_response(jsonify(visit.to_dict()), 200)
 
-api.add_resource(Visits, '/visits')
-api.add_resource(VisitById, '/visits/<int:id>')
+api.add_resource(Visits, '/api/visits')
+api.add_resource(VisitById, '/api/visits/<int:id>')
 
 
 if __name__ == '__main__':
-    app.run(port=5555, debug=True)
+    app.run(port=8000, debug=True)
 
