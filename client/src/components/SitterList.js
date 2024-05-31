@@ -7,7 +7,7 @@ const SitterList = ({ search }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("/sitters")
+    fetch("/api/sitters")
       .then((response) => response.json())
       .then((data) => {
         setSitters(data);
@@ -38,7 +38,7 @@ const SitterList = ({ search }) => {
       <ul>
         {filteredSitters.map((sitter) => (
           <li key={sitter.id} className="sitter-card">
-            <Link to={`/sitters/${sitter.id}`}>
+            <Link to={`/app/sitters/${sitter.id}`}>
               <img
                 className="sitter-home-image"
                 src={`${sitter.image}`}
@@ -47,7 +47,7 @@ const SitterList = ({ search }) => {
             </Link>
             <br />
             <div className="button-link-container">
-              <Link to={`/sitters/${sitter.id}`} className="button-link">
+              <Link to={`/app/sitters/${sitter.id}`} className="button-link">
                 {sitter.name}
               </Link>
             </div>

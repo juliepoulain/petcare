@@ -10,7 +10,7 @@ function Login({ ownerId, setOwnerId }) {
   function handleSubmit(e) {
     e.preventDefault();
     const formattedPhone = phone.replace(/\D/g, "");
-    fetch(`/owners/phone/${formattedPhone}`)
+    fetch(`/api/owners/phone/${formattedPhone}`)
       .then((r) => {
         if (!r.ok) {
           throw new Error("Network response was not ok");

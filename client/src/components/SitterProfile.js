@@ -11,7 +11,7 @@ const SitterProfile = ({ ownerId }) => {
   const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
-    fetch(`/sitters/${id}`)
+    fetch(`/api/sitters/${id}`)
       .then((r) => r.json())
       .then((data) => {
         setSitter(data);

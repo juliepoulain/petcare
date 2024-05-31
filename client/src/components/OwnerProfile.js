@@ -10,7 +10,7 @@ function OwnerProfile({ ownerId }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`/owners/${ownerId}`)
+    fetch(`/api/owners/${ownerId}`)
       .then((r) => {
         if (!r.ok) {
           throw new Error("Network response was not ok");
@@ -41,11 +41,11 @@ function OwnerProfile({ ownerId }) {
     <div>
       <div className="profile-info">
         <div className="card">
-        <h2>My Profile</h2>
-        <p>Name: {owner.name}</p>
-        <p>Email: {owner.email}</p>
-        <p>Phone Number: {owner.phone}</p>
-        <p>Address: {owner.address}</p>
+          <h2>My Profile</h2>
+          <p>Name: {owner.name}</p>
+          <p>Email: {owner.email}</p>
+          <p>Phone Number: {owner.phone}</p>
+          <p>Address: {owner.address}</p>
         </div>
       </div>
       <div className="pets-owner">

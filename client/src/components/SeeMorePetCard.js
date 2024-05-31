@@ -8,7 +8,7 @@ function SeeMorePetCard({ ownerId }) {
   const [showVisits, setShowVisits] = useState(false);
 
   useEffect(() => {
-    fetch(`/pets/${id}`)
+    fetch(`/api/pets/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPet(data);
@@ -24,7 +24,6 @@ function SeeMorePetCard({ ownerId }) {
   return (
     <div className="see-more-pet-card-container">
       <div>
-
         <h1>{name}</h1>
         <img src={image} alt={name} />
       </div>
@@ -41,7 +40,6 @@ function SeeMorePetCard({ ownerId }) {
             <VisitList petId={id} context="pet" />
           </div>
         )}
-
       </div>
     </div>
   );

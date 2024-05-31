@@ -20,7 +20,7 @@ function PetForm({ ownerId, onAddPet }) {
       owner_id: ownerId,
     };
 
-    fetch("/pets", {
+    fetch("/api/pets", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

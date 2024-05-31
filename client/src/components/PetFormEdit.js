@@ -30,7 +30,7 @@ function PetFormEdit({ pet, onEditPet }) {
       temperament,
       image,
     };
-    fetch(`/pets/${pet.id}`, {
+    fetch(`/api/pets/${pet.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

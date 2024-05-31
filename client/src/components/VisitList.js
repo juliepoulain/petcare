@@ -6,7 +6,7 @@ function VisitList({ ownerId, petId, context }) {
   const [visits, setVisits] = useState([]);
 
   useEffect(() => {
-    let url = "";
+    let url = "/api";
     if (ownerId) {
       url = `/owners/${ownerId}`;
     } else if (petId) {

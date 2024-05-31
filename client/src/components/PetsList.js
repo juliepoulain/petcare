@@ -10,7 +10,7 @@ function PetsList({ ownerId }) {
   // Initial fetch to get pets by the owner
   useEffect(() => {
     if (ownerId) {
-      fetch(`/owners/${ownerId}`)
+      fetch(`/api/owners/${ownerId}`)
         .then((r) => r.json())
         .then((data) => {
           setPets(data.pets);
@@ -32,7 +32,7 @@ function PetsList({ ownerId }) {
   //function to handle delete
   const handleDeletePet = (petId) => {
     setPets(pets.filter((pet) => pet.id !== petId));
-    fetch(`/pets/${petId}`, { method: "DELETE" }).then(() => {});
+    fetch(`/api/pets/${petId}`, { method: "DELETE" }).then(() => {});
   };
 
   return (

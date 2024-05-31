@@ -10,7 +10,7 @@ const VisitProfile = ({ ownerId }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/visits/${id}`)
+    fetch(`/api/visits/${id}`)
       .then((response) => {
         if (response.ok) {
           return response.json();

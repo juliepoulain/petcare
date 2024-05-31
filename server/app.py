@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-from config import *
-import os
+from flask import render_template, make_response, jsonify, request
 from flask_restful import Resource
-from flask import make_response, jsonify, request
-from models import Owner, Pet, Sitter, Visit, db
-from app import api
-from flask_cors import CORS
+from models import Owner, Pet, Sitter, Visit
+from config import app, api, db
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.environ.get("DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("index.html")
 
 @app.route("/api")
 def index():
@@ -34,10 +32,6 @@ class Pets(Resource):
         db.session.commit()
         return make_response(jsonify(new_pet.to_dict()), 201)
 api.add_resource(Pets, '/api/pets')
-
-
-
-
  
 class PetsById(Resource):
     
@@ -162,5 +156,5 @@ api.add_resource(VisitById, '/api/visits/<int:id>')
 
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True)
+    app.run(port=8080, debug=True)
 
