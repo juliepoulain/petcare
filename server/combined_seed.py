@@ -25,7 +25,8 @@ with app.app_context():
     garfield = Pet(name="Garfield", image="https://images.pexels.com/photos/4587955/pexels-photo-4587955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", animal="cat", age=3, temperament="lazy", owner_id=julie.id)
     rose = Pet(name="Rose", image="https://img.freepik.com/free-photo/close-up-portrait-beautiful-cat_23-2149214419.jpg", animal="cat", age=1, temperament="not friendly", owner_id=billy.id)
     buddy = Pet(name="Buddy", image="https://image.shutterstock.com/image-photo/happy-puppy-dog-smiling-on-260nw-1799966587.jpg", animal="dog", age=11, temperament="friendly", owner_id=billy.id)
-    pets=[garfield, rose, buddy]
+    olivia = Pet(name="Olivia", image="https://i.imgur.com/HhvboVU.jpeg", animal="cat", age=4, temperament="avoidant", owner_id=julie.id)
+    pets=[garfield, rose, buddy, olivia]
     db.session.add_all(pets)
     db.session.commit()
 
