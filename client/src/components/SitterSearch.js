@@ -14,7 +14,7 @@ function SitterSearch({ setSearch }) {
       <input
         type="text"
         id="search"
-        placeholder="Search for sitter near you"
+        placeholder="Search for a sitter by name, city, or zip"
         value={searchTerm}
         onChange={handleChange}
       />

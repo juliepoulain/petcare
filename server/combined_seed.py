@@ -103,7 +103,8 @@ with app.app_context():
     visitE = Visit(visit_notes="Nothing to report.", sitter_id=sitters[3].id, pet_id=rose.id, owner_id=billy.id, date=date(2024, 8, 10), check_in_time=time(9, 45))
     visitF = Visit(visit_notes="Nothing to report.", sitter_id=sitters[4].id, pet_id=buddy.id, owner_id=billy.id, date=date(2024, 9, 20), check_in_time=time(11, 30))
     visitG = Visit(visit_notes="I adore garfield!", sitter_id=sitters[5].id, pet_id=garfield.id, owner_id=julie.id, date=date(2024, 10, 5), check_in_time=time(14, 0))
-    visits = [visitA, visitB, visitC, visitD, visitE, visitF, visitG]
+    visitH = Visit(visit_notes="Olivia is so cute!!!! She hid from me at first but then came out for cuddles", sitter_id=sitters[2].id, pet_id=olivia.id, owner_id=julie.id, date=date(2024, 10, 5), check_in_time=time(14, 0))
+    visits = [visitA, visitB, visitC, visitD, visitE, visitF, visitG, visitH]
     db.session.add_all(visits)
     db.session.commit()
 
