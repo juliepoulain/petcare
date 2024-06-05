@@ -6,11 +6,11 @@ function VisitList({ ownerId, petId, context }) {
   const [visits, setVisits] = useState([]);
 
   useEffect(() => {
-    let url = "/api";
+    let url = "";
     if (ownerId) {
-      url = `/owners/${ownerId}`;
+      url = `/api/owners/${ownerId}`;
     } else if (petId) {
-      url = `/pets/${petId}`;
+      url = `/api/pets/${petId}`;
     }
 
     if (url) {
@@ -23,6 +23,8 @@ function VisitList({ ownerId, petId, context }) {
         });
     }
   }, [ownerId, petId]);
+
+  console.log(visits);
 
   const visitCards = visits.map((visit) =>
     context === "owner" ? (

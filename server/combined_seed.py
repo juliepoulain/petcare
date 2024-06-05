@@ -9,6 +9,12 @@ if __name__ == '__main__':
 
 with app.app_context():
 
+    print("Deleting visits...")
+    Visit.query.delete()
+    print("Deleting sitters...")
+    Sitter.query.delete()
+    print("Deleting pets...")
+    Pet.query.delete()
     print("Deleting owners...")
     Owner.query.delete()
     print("Creating owners...")
@@ -19,8 +25,6 @@ with app.app_context():
     db.session.add_all(owners)
     db.session.commit()
 
-    print("Deleting pets...")
-    Pet.query.delete()
     print("Adding pets...")
     garfield = Pet(name="Garfield", image="https://images.pexels.com/photos/4587955/pexels-photo-4587955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", animal="cat", age=3, temperament="lazy", owner_id=julie.id)
     rose = Pet(name="Rose", image="https://img.freepik.com/free-photo/close-up-portrait-beautiful-cat_23-2149214419.jpg", animal="cat", age=1, temperament="not friendly", owner_id=billy.id)
@@ -30,8 +34,6 @@ with app.app_context():
     db.session.add_all(pets)
     db.session.commit()
 
-    print("Deleting sitters...")
-    Sitter.query.delete()
     print("Creating sitters...")
     sitters = [
         Sitter(
@@ -93,8 +95,6 @@ with app.app_context():
         db.session.add(sitter)
     db.session.commit()
 
-    print("Deleting visits...")
-    Visit.query.delete()
     print("Creating visits...")
     visitA = Visit(visit_notes="Garfield was very sweet today. He ate all his food and I watched him drink some water. We played fetch for a while and cuddled while watching Bridgerton. A great visit!", sitter_id=sitters[0].id, pet_id=garfield.id, owner_id=julie.id, date=date(2024, 1, 2), check_in_time=time(14, 27))
     visitB = Visit(visit_notes="Garfield was aloof today. I guess we're not friends anymore. I am sad.", sitter_id=sitters[0].id, pet_id=garfield.id, owner_id=julie.id, date=date(2024, 2, 1), check_in_time=time(12, 12))
