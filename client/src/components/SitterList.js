@@ -38,7 +38,7 @@ const SitterList = ({ search }) => {
       <ul>
         {filteredSitters.map((sitter) => (
           <li key={sitter.id} className="sitter-card">
-            <Link to={`/app/sitters/${sitter.id}`}>
+            <Link to={`/sitters/${sitter.id}`}>
               <img
                 className="sitter-home-image"
                 src={`${sitter.image}`}
@@ -47,7 +47,7 @@ const SitterList = ({ search }) => {
             </Link>
             <br />
             <div className="button-link-container">
-              <Link to={`/app/sitters/${sitter.id}`} className="button-link">
+              <Link to={`/sitters/${sitter.id}`} className="button-link">
                 {sitter.name}
               </Link>
             </div>
