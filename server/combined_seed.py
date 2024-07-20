@@ -26,10 +26,10 @@ with app.app_context():
     db.session.commit()
 
     print("Adding pets...")
-    garfield = Pet(name="Garfield", image="https://images.pexels.com/photos/4587955/pexels-photo-4587955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", animal="cat", age=3, temperament="lazy", owner_id=julie.id)
+    garfield = Pet(name="Garfield", image="https://images.pexels.com/photos/4587955/pexels-photo-4587955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", animal="cat", age=3, temperament="lazy", owner_id=julie.id, breed="shorthair")
     rose = Pet(name="Rose", image="https://img.freepik.com/free-photo/close-up-portrait-beautiful-cat_23-2149214419.jpg", animal="cat", age=1, temperament="not friendly", owner_id=billy.id)
     buddy = Pet(name="Buddy", image="https://image.shutterstock.com/image-photo/happy-puppy-dog-smiling-on-260nw-1799966587.jpg", animal="dog", age=11, temperament="friendly", owner_id=billy.id)
-    olivia = Pet(name="Olivia", image="https://i.imgur.com/HhvboVU.jpeg", animal="cat", age=4, temperament="avoidant", owner_id=julie.id)
+    olivia = Pet(name="Olivia", image="https://i.imgur.com/HhvboVU.jpeg", animal="cat", age=4, temperament="avoidant", owner_id=julie.id, breed="shorthair")
     pets=[garfield, rose, buddy, olivia]
     db.session.add_all(pets)
     db.session.commit()
@@ -37,58 +37,58 @@ with app.app_context():
     print("Creating sitters...")
     sitters = [
         Sitter(
-            name="Jason Vorhees",
-            bio="Great with watching your little ones at a lake",
+            name="Hannah",
+            bio="Cats, dogs, and coffee are all I need in life!",
             experience=7,
             image="https://images.nightcafe.studio/jobs/6sLDmT6whBds1MnmQf6y/6sLDmT6whBds1MnmQf6y--1--5hp52_2x.jpg?tr=w-1200,c-at_max",
             address="12 Crystal Lake, Wantabe, NJ 07050",
             phone=1111111111,
-            email="jvorheesluvsyou1@madeup.com"
+            email="hannah@example.com"
         ),
         Sitter(
-            name="Freddy Krueger",
-            bio="Ensures your pets have the best dreams",
+            name="Kelly",
+            bio="Responsible and timely!",
             experience=10,
             image="https://static1.srcdn.com/wordpress/wp-content/uploads/2016/10/Nightmare-on-Elm-Street-6.jpg",
             address="1428 Elm Street, Springwood, OH 45459",
             phone=1111111111,
-            email="fkrueger@nightmares.com"
+            email="kelly@example.com"
         ),
         Sitter(
-            name="Michael Myers",
-            bio="Silent but always keeps an eye on your pets",
+            name="Michael",
+            bio="Pet lover",
             experience=8,
             image="https://coleandmarmalade.com/wp-content/uploads/2022/03/Michael-Meowers-1.jpg",
             address="45 Lampkin Lane, Haddonfield, IL 60120",
             phone=1111111111,
-            email="mmyers@halloween.com"
+            email="michael@example.com"
         ),
         Sitter(
-            name="Chucky Ray",
+            name="Terri",
             bio="Great with pets, especially if they like to play",
             experience=5,
             image="https://static1.srcdn.com/wordpress/wp-content/uploads/2021/10/Brad-Dourif-as-Chucky-with-Binx-the-Cat-in-Chucky-Episode-1.jpg",
             address="123 Good Guys St, Hackensack, NJ 07601",
             phone=1111111111,
-            email="cray@goodguys.com"
+            email="Terri@example.com"
         ),
         Sitter(
-            name="Norman Bates",
-            bio="Takes care of your pets like they were his own",
+            name="Allison",
+            bio="I'll take care of your pets like they're my own!",
             experience=6,
             image="https://m.media-amazon.com/images/M/MV5BMWZiYmM3MzItYzFiOC00N2VmLWEwOWQtZTYzYjFmNjZlMWRlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNzAzMDEzNTI@._V1_.jpg",
             address="12 Old Highway, Fairvale, CA 93922",
             phone=1111111111,
-            email="nbates@batesmotel.com"
+            email="ally@example.com"
         ),
         Sitter(
-            name="Pennywise Clown",
-            bio="Your pets will float with joy under my care",
+            name="Penny",
+            bio="I love all animals!!",
             experience=9,
             image="https://photos.costume-works.com/full/pennywise_and_his_dog-31298-1.jpg",
             address="29 Neibolt Street, Derry, ME 04401",
             phone=1111111111,
-            email="pennywise@it.com"
+            email="penny@example.com"
         )
     ]
     for sitter in sitters:

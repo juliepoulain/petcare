@@ -39,7 +39,7 @@ function OwnerProfile({ ownerId }) {
 
   return (
     <div>
-      <div className="profile-info">
+      <div>
         <div className="card">
           <h2>My Profile</h2>
           <p>Name: {owner.name}</p>
