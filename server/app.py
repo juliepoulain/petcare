@@ -1,14 +1,28 @@
 #!/usr/bin/env python3
-from flask import render_template, make_response, jsonify, request
+from config import *
+import os
 from flask_restful import Resource
-from models import Owner, Pet, Sitter, Visit
-from config import app, api, db
+from flask import make_response, jsonify, request
+from models import Owner, Pet, Sitter, Visit, db
+from app import api
+from flask_cors import CORS
 
-@app.errorhandler(404)
-def not_found(e):
-    return render_template("index.html")
 
-@app.route("/api")
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATABASE = os.environ.get("DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
+
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.json.compact = False
+
+migrate = Migrate(app, db)
+
+db.init_app(app)
+CORS(app)
+api = Api(app)
+
+@app.route("/")
 def index():
     return "<h1>Petsitting</h1>"
 
@@ -31,7 +45,11 @@ class Pets(Resource):
         db.session.add(new_pet)
         db.session.commit()
         return make_response(jsonify(new_pet.to_dict()), 201)
-api.add_resource(Pets, '/api/pets')
+api.add_resource(Pets, '/pets')
+
+
+
+
  
 class PetsById(Resource):
     
@@ -61,7 +79,7 @@ class PetsById(Resource):
         return make_response('', 204)
         
 
-api.add_resource(PetsById, '/api/pets/<int:id>')
+api.add_resource(PetsById, '/pets/<int:id>')
 
 class Owners(Resource):
     def get(self):
@@ -94,9 +112,9 @@ class OwnersByPhone(Resource):
             return make_response({"error": "Owner not found"}, 404)
         return make_response(jsonify(owner.to_dict()), 200)
 
-api.add_resource(Owners, '/api/owners')
-api.add_resource(OwnersById, '/api/owners/<int:id>')
-api.add_resource(OwnersByPhone, '/api/owners/phone/<int:phone>')
+api.add_resource(Owners, '/owners')
+api.add_resource(OwnersById, '/owners/<int:id>')
+api.add_resource(OwnersByPhone, '/owners/phone/<int:phone>')
 
 class Sitters(Resource):
     def get(self):
@@ -125,8 +143,8 @@ class SitterById(Resource):
             return make_response({"error": "Sitter not found"}, 404)
         return make_response(jsonify(sitter.to_dict()), 200)
 
-api.add_resource(Sitters, '/api/sitters')
-api.add_resource(SitterById, '/api/sitters/<int:id>')
+api.add_resource(Sitters, '/sitters')
+api.add_resource(SitterById, '/sitters/<int:id>')
 
 class Visits(Resource):
     def get(self):
@@ -151,10 +169,10 @@ class VisitById(Resource):
             return make_response({"error": "Visit not found"}, 404)
         return make_response(jsonify(visit.to_dict()), 200)
 
-api.add_resource(Visits, '/api/visits')
-api.add_resource(VisitById, '/api/visits/<int:id>')
+api.add_resource(Visits, '/visits')
+api.add_resource(VisitById, '/visits/<int:id>')
 
 
 if __name__ == '__main__':
-    app.run(port=8080, debug=True)
+    app.run(port=5555, debug=True)
 
